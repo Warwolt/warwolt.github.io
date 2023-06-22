@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link href="../../../../themes/prism.css" rel="stylesheet" />
+  <link href="../../../../themes/prism.css" rel="stylesheet" />
   <link rel="stylesheet" href="../../../../styles.css" />
   <title>Writing a Vector in C</title>
 </head>
 
 <body>
-	<script src="../../../../scripts/prism.js"></script>
+  <script src="../../../../scripts/prism.js"></script>
 
   <header>
     <nav>
@@ -24,76 +24,153 @@
   <main>
     <h1>Writing a Vector in C</h1>
     <article>
-      <p>This is an article about writing Vectors in C99, that is, dynamic
-        arrays. This will be an exercise in seeing what can be done with C, and how
-        we might emulate Generic Programming in C.</p>
+      <p>
+        This is an article about writing vectors in C99 (aka dynamic arrays).
+        We're doing this for the fun of it, to see what can be done with the C
+        language, and to get to take a look at
+        <a href="https://en.wikipedia.org/wiki/Generic_programming"
+          >Generic Programming</a
+        >
+        in such a simple setting like C provides.
+      </p>
 
-      <p>We will do this by a combination of preprocessor macros and some clever
-        memory layouting, with a trick that I first learnt from <a
-          href="https://github.com/nothings/stb/blob/5736b15f7ea0ffb08dd38af21067c314d6a3aae9/tests/prerelease/stb_lib.h#L1159">stb.h</a>
-        by Sean Barrett.</p>
+      (article image)
 
-      <p>The code we'll write will end up looking like this in its usage:</p>
+      <p>
+        Vectors might be familiar to the reader from languages like C++ and
+        Rust, and they're called ArrayList in Java and C#. Vectors are arrays
+        that can grow and shrink in size as elements are added and removed from
+        them, by storing the elements in heap memory and re-allocating that
+        memory when needed, instead of storing the items in a fixed sized array
+        in stack memory.
+      </p>
 
-<pre><code class="language-c">#include "vector.h"
-#include &lt;stdio.h&gt;
+      <p>
+        We'll implement vectors in C with a combination of preprocessor macros
+        and some clever memory layouting, with a trick that I first learnt from
+        <a
+          href="https://github.com/nothings/stb/blob/5736b15f7ea0ffb08dd38af21067c314d6a3aae9/tests/prerelease/stb_lib.h#L1159"
+          >stb.h</a
+        >
+        by Sean Barrett.
+      </p>
 
-void main() {
-    vec_t(int) vec = vec_new(int);
+      <h2>I. Example usage of vectors in C</h2>
+      <p>
+        Let's begin by taking a look at how vectors can be used in a simple C
+        program, so we get a sense of the thing we're going to build.
+      </p>
 
-    vec_push(vec, 11);
-    vec_push(vec, 22);
-    vec_push(vec, 33);
+      <h3>Calculating an average</h3>
+      <p></p>
 
-    for (size_t i = 0; i < vec_size(vec); i++) {
-        printf("vec[%zu] = %d\n", i, vec[i]);
+      <p>
+        This example program takes some integer arguments and calculates their
+        average, and does this using vectors. The program consists of three
+        functions; <code>parse_numbers</code>, <code>compute_average</code> and
+        <code>main</code>.
+      </p>
+
+      <p>
+        The <code>parse_numbers</code> function takes the command line arguments
+        and parses them into numbers are pushes them into a newly constructed
+        vector, which is then returned to the caller. The
+        <code>vec_t(long)</code> type acts like a <code>long[]</code> array, but
+        is able to hold any amount of <code>long</code> values. (Error checking
+        omitted for brevity).
+      </p>
+
+      <aside class="callout">
+        <p>
+          <strong>Note:</strong> already here we can notice that we'll be
+          putting preprocessor macros into use! The expression
+          <code>vec_t()</code> will turn out to be a macro that takes a typename
+          (like <code>long</code>) as argument.
+        </p>
+      </aside>
+
+      <pre><code class="language-c">vec_t(long) parse_numbers(const char* strings[], size_t num_strings) {
+    vec_t(long) numbers = vec_new(long);
+
+    for (size_t i = 0; i < num_strings; i++) {
+        long number = strtol(strings[i], NULL, 10);
+        vec_push(numbers, number);
     }
 
-    vec_free(vec);
+    return numbers;
 }</code></pre>
 
-      <p>This post will be divided up into three sections; First, I will first
-        give a motivation for why we should even introduce dynamic arrays into a C
-        program. Second, I will give some background on Generic Programming, and
-        then finally knowing that we <em>can</em> add vectors and have some
-        theoretical background on how they might look, we can proceed to the
-        actual coding part.</p>
+      <p>
+        Once the input has been parsed, we can take the numbers and compute
+        their average with the
+        <code>compute_average</code> function, which takes a
+        <code>vector</code> as argument and then returns a float average.
+      </p>
 
-      <h3>Table of contents</h3>
-      <ol>
-        <li>Why Vectors are useful in C</li>
-        <li>Generic Programming and Macros</li>
-        <li>Implementing the Vector</li>
-      </ol>
+      <pre><code class="language-c">float compute_average(vec_t(long) numbers) {
+    float sum = 0;
 
-      <h2>Why Vectors are useful in C</h2>
-      <p>(motivation for heap allocated arrays)</p>
+    for (size_t i = 0; i < vec_size(numbers); i++) {
+        sum += numbers[i];
+    }
 
-      <p>(when should we stick to stack allocated data? What alterantives do we
-        have for storing multiples of data?)</p>
+    return (float)sum / vec_size(numbers);
+}</code></pre>
 
-      <h2>Generic Programming and Macros</h2>
-      <p>(Generic programming is a style of programming where types can be parameterized)</p>
+      <p>
+        These two functions can then be applied in the <code>main</code>
+        function, where the average of the input is calculated and then printed
+        to stdout.
+      </p>
+
+      <pre><code class="language-c">vec_t(long) parse_numbers(int argc, char** argv);
+float compute_average(vec_t(long) numbers);+
+
+int main(int argc, char** argv) {
+    vec_t(long) numbers = parse_numbers(argc - 1, argv + 1);
+
+    float average = compute_average(numbers);
+    printf("average: %.2f \n", average);
+
+    vec_free(numbers);
+    return 0;
+}</code></pre>
+
+      <p>Running this program gives the following ouput:</p>
+
+      <pre><code class="language-none">> average_program 14 16 20
+average: 16.67
+</code></pre>
+
+      <h2>II. Generic Programming and Macros</h2>
+      <p>
+        (Generic programming is a style of programming where types can be
+        parameterized)
+      </p>
 
       <h3>What are Generics?</h3>
       <p>(Pratical example from some languages, Java, C++, Haskell?)</p>
       <p>(Short short history on Generics, what languages have them)</p>
-      <p>(Short theory behind the parallels to universal quantification in programming)</p>
+      <p>
+        (Short theory behind the parallels to universal quantification in
+        programming)
+      </p>
 
       <h3>Type parameters in C using Macros</h3>
-      <p>(Given all this, how might we implement generics using C and Macros?)</p>
+      <p>
+        (Given all this, how might we implement generics using C and Macros?)
+      </p>
       <p>(Some very short simple examples)</p>
 
-      <h2>Implementing the Vector</h2>
+      <h2>III. Implementing the Vector</h2>
       <p>(The STB memory layout trick)</p>
       <p>(Writing a concrete vector for int only)</p>
       <p>(Making it generic using macros)</p>
       <p>(Example program using it)</p>
 
-      <h2>Summary</h2>
+      <h2>IV. Summary</h2>
       <p>(We wrote a Vector as an example of Generic Programming in C)</p>
       <p>(What did we learn?)</p>
-
     </article>
   </main>
 

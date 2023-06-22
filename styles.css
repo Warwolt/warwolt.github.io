@@ -36,6 +36,12 @@ footer {
   text-align: center;
 }
 
+code:not([class]) {
+  background-color: rgba(175,184,193,.2);
+  padding: 0.2em 0.4em;
+  border-radius: 6px;
+}
+
 .post-title, h2 {
   margin-bottom: 0;
 }
@@ -53,3 +59,12 @@ footer {
   margin-bottom: 22px;
 }
 
+.callout {
+  background-color: rgb(229, 243, 254);
+  border: 1px solid rgb(205,205,205);
+  border-radius: 0.25rem;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-top: 20px;;
+  margin-bottom: 20px;
+}
