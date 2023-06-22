@@ -3,11 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href="../../../../themes/prism.css" rel="stylesheet" />
   <link rel="stylesheet" href="../../../../styles.css" />
   <title>Writing a Vector in C</title>
 </head>
 
 <body>
+	<script src="../../../../scripts/prism.js"></script>
+
   <header>
     <nav>
       <a href="/">Rasmus Källqvist's Blog</a>
@@ -32,9 +35,8 @@
 
       <p>The code we'll write will end up looking like this in its usage:</p>
 
-<pre><code>
-#include &lt;stdio.h&lt;
-#include "vector.h"
+<pre><code class="language-c">#include "vector.h"
+#include &lt;stdio.h&gt;
 
 void main() {
     vec_t(int) vec = vec_new(int);
