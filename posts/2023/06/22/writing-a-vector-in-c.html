@@ -1,11 +1,48 @@
 <!DOCTYPE html>
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="styles.css" />
-  <title>About</title>
+  <link rel="stylesheet" href="../../../../styles.css" />
+  <title>Writing a Vector in C</title>
 </head>
 
 <body>
-  <header><a href="/">Writing a Vector in C</a></header>
+  <header>
+    <nav>
+      <a href="/">Rasmus Källqvist's Blog</a>
+      <ul>
+        <li><a href="/archive.html">Archive</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <h1>Writing a Vector in C</h1>
+
+      <p>This is an article about writing Vectors in C99, that is, a dynamic
+      array. This will be an exercise in seeing what can be done with C, and how
+      we might emulate Generic Programming.</p>
+
+      <p>We will do this by a combination of preprocessor macros and some clever
+      memory layouting, with a trick that I first learnt from <a
+      href="https://github.com/nothings/stb/blob/5736b15f7ea0ffb08dd38af21067c314d6a3aae9/tests/prerelease/stb_lib.h#L1159">stb.h</a>
+      by Sean Barrett.</p>
+
+      <h2>Why Vector are useful in C</h2>
+      <p>(motivation for heap allocated arrays)</p>
+
+      <p>(when should we stick to stack allocated data? What alterantives do we
+      have for storing multiples of data?)</p>
+
+      <h2>Generic Programming</h2>
+
+    </article>
+  </main>
+
+  <footer>
+    <p>© Rasmus Källqvist 2023</p>
+  </footer>
 </body>
