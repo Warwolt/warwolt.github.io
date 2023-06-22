@@ -32,9 +32,23 @@
 
       <p>The code we'll write will end up looking like this in its usage:</p>
 
-      <code>
-        (code snippet)
-      </code>
+<pre><code>
+#include &lt;stdio.h&lt;
+#include "vector.h"
+
+void main() {
+    vec_t(int) vec = vec_new(int);
+
+    vec_push(vec, 11);
+    vec_push(vec, 22);
+    vec_push(vec, 33);
+
+    for (size_t i = 0; i < vec_size(vec); i++) {
+        printf("vec[%zu] = %d\n", i, vec[i]);
+    }
+
+    vec_free(vec);
+}</code></pre>
 
       <p>This post will be divided up into three sections; First, I will first
         give a motivation for why we should even introduce dynamic arrays into a C
