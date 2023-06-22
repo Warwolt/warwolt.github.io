@@ -19,25 +19,64 @@
   </header>
 
   <main>
+    <h1>Writing a Vector in C</h1>
     <article>
-      <h1>Writing a Vector in C</h1>
-
-      <p>This is an article about writing Vectors in C99, that is, a dynamic
-      array. This will be an exercise in seeing what can be done with C, and how
-      we might emulate Generic Programming.</p>
+      <p>This is an article about writing Vectors in C99, that is, dynamic
+        arrays. This will be an exercise in seeing what can be done with C, and how
+        we might emulate Generic Programming in C.</p>
 
       <p>We will do this by a combination of preprocessor macros and some clever
-      memory layouting, with a trick that I first learnt from <a
-      href="https://github.com/nothings/stb/blob/5736b15f7ea0ffb08dd38af21067c314d6a3aae9/tests/prerelease/stb_lib.h#L1159">stb.h</a>
-      by Sean Barrett.</p>
+        memory layouting, with a trick that I first learnt from <a
+          href="https://github.com/nothings/stb/blob/5736b15f7ea0ffb08dd38af21067c314d6a3aae9/tests/prerelease/stb_lib.h#L1159">stb.h</a>
+        by Sean Barrett.</p>
 
-      <h2>Why Vector are useful in C</h2>
+      <p>The code we'll write will end up looking like this in its usage:</p>
+
+      <code>
+        (code snippet)
+      </code>
+
+      <p>This post will be divided up into three sections; First, I will first
+        give a motivation for why we should even introduce dynamic arrays into a C
+        program. Second, I will give some background on Generic Programming, and
+        then finally knowing that we <em>can</em> add vectors and have some
+        theoretical background on how they might look, we can proceed to the
+        actual coding part.</p>
+
+      <h3>Table of contents</h3>
+      <ol>
+        <li>Why Vectors are useful in C</li>
+        <li>Generic Programming and Macros</li>
+        <li>Programming the Vector</li>
+      </ol>
+
+      <h2>Why Vectors are useful in C</h2>
       <p>(motivation for heap allocated arrays)</p>
 
       <p>(when should we stick to stack allocated data? What alterantives do we
-      have for storing multiples of data?)</p>
+        have for storing multiples of data?)</p>
 
-      <h2>Generic Programming</h2>
+      <h2>Generic Programming and Macros</h2>
+      <p>(Generic programming is a style of programming where types can be parameterized)</p>
+
+      <h3>What are Generics?</h3>
+      <p>(Pratical example from some languages, Java, C++, Haskell?)</p>
+      <p>(Short short history on Generics, what languages have them)</p>
+      <p>(Short theory behind the parallels to universal quantification in programming)</p>
+
+      <h3>Type parameters in C using Macros</h3>
+      <p>(Given all this, how might we implement generics using C and Macros?)</p>
+      <p>(Some very short simple examples)</p>
+
+      <h2>Programming the Vector</h2>
+      <p>(The STB memory layout trick)</p>
+      <p>(Writing a concrete vector for int only)</p>
+      <p>(Making it generic using macros)</p>
+      <p>(Example program using it)</p>
+
+      <h2>Summary</h2>
+      <p>(We wrote a Vector as an example of Generic Programming in C)</p>
+      <p>(What did we learn?)</p>
 
     </article>
   </main>
