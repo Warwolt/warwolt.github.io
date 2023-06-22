@@ -7,14 +7,37 @@ body {
 }
 
 header {
-  background-color:blanchedalmond
+  border-bottom: 1px solid black;
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header nav ul {
+  list-style: none;
+}
+
+header nav ul li {
+  display: inline;
+  padding-right: 10px;
 }
 
 main {
-  background-color: rgb(217, 245, 230);
   flex: 1;
 }
 
 footer {
-  background-color:aliceblue
+  border-top: 1px solid black;
+  text-align: center;
+}
+
+.post-title, h2 {
+  margin-bottom: 0;
+}
+
+.post-title, time {
+  font-style: italic
 }
