@@ -35,7 +35,7 @@
       </p>
 
       <p>
-        A dynamic array is called a Vector in C++ and Rust, and are called
+        A dynamic array is called a Vector in C++ and Rust, and is called an
         ArrayList in Java and C#. In scripting languages like Python and
         JavaScript, all arrays are dynamic.
       </p>
@@ -67,15 +67,15 @@
       <p></p>
 
       <p>
-        This example program takes some integer arguments and calculates their
-        average, and does this using vectors. The program consists of three
-        functions; <code>parse_numbers</code>, <code>compute_average</code> and
-        <code>main</code>.
+        This example program takes some integer arguments on the command line
+        and calculates their average, and prints the result to stdout. The
+        program consists of three functions; <code>parse_numbers</code>,
+        <code>compute_average</code> and <code>main</code>.
       </p>
 
       <p>
-        The <code>parse_numbers</code> function takes the command line arguments
-        and parses them into numbers and pushes them into a newly constructed
+        The <code>parse_numbers</code> function takes an array of strings and
+        parses them into numbers and pushes them into a newly constructed
         vector, which is then returned to the caller. The
         <code>vec_t(long)</code> type acts like a <code>long[]</code> array, but
         is able to hold any amount of <code>long</code> values (error checking
@@ -120,8 +120,10 @@
 }</code></pre>
 
       <p>
-        These two functions can then be applied in the <code>main</code>
-        function, where the average of the input is calculated and then printed
+        These two functions are then be applied in the
+        <code>main</code> function. The user input from stdin is passed into
+        <code>parse_numbers</code> (skipping this first argument since that is
+        just the executable name), and the average is then computed and printed
         to stdout.
       </p>
 
@@ -142,9 +144,8 @@ average: 16.67
 </code></pre>
 
       <p>
-        We've now seen a way in which vectors can be useful when writing C
-        programs! In the next section we'll take a closer look at what's going
-        on when passing a type into the vector type in an expression like
+        In the next section we'll take a closer look at what's going on when
+        passing a type argument into the vector type in an expression like
         <code>vec_t(long)</code>.
       </p>
 
