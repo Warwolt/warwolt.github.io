@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="../../../../themes/prism.css" rel="stylesheet" />
   <link rel="stylesheet" href="../../../../styles.css" />
-  <title>Writing a Vector in C</title>
+  <title>Writing a vector in C</title>
 </head>
 
 <body>
@@ -22,7 +22,7 @@
   </header>
 
   <main>
-    <h1>Writing a Vector in C</h1>
+    <h1>Writing a vector in C</h1>
     <article>
       <p>
         This is an article about writing vectors in C99 (aka dynamic arrays).
@@ -34,15 +34,17 @@
         in such a simple setting like C provides.
       </p>
 
-      (article image)
+      <p>
+        A dynamic array is called a Vector in C++ and Rust, and are called
+        ArrayList in Java and C#. In scripting languages like Python and
+        JavaScript, all arrays are dynamic.
+      </p>
 
       <p>
-        Vectors might be familiar to the reader from languages like C++ and
-        Rust, and they're called ArrayList in Java and C#. Vectors are arrays
-        that can grow and shrink in size as elements are added and removed from
-        them, by storing the elements in heap memory and re-allocating that
-        memory when needed, instead of storing the items in a fixed sized array
-        in stack memory.
+        Vectors are arrays that can grow and shrink in size as elements are
+        added and removed from them, by storing the elements in heap memory and
+        re-allocating that memory when needed, instead of storing the items in a
+        fixed sized array in stack memory.
       </p>
 
       <p>
@@ -73,16 +75,16 @@
 
       <p>
         The <code>parse_numbers</code> function takes the command line arguments
-        and parses them into numbers are pushes them into a newly constructed
+        and parses them into numbers and pushes them into a newly constructed
         vector, which is then returned to the caller. The
         <code>vec_t(long)</code> type acts like a <code>long[]</code> array, but
-        is able to hold any amount of <code>long</code> values. (Error checking
+        is able to hold any amount of <code>long</code> values (error checking
         omitted for brevity).
       </p>
 
       <aside class="callout">
         <p>
-          <strong>Note:</strong> already here we can notice that we'll be
+          <strong>Note:</strong> Already here we can notice that we'll be
           putting preprocessor macros into use! The expression
           <code>vec_t()</code> will turn out to be a macro that takes a typename
           (like <code>long</code>) as argument.
@@ -104,7 +106,7 @@
         Once the input has been parsed, we can take the numbers and compute
         their average with the
         <code>compute_average</code> function, which takes a
-        <code>vector</code> as argument and then returns a float average.
+        <code>vector</code> as argument and then returns the average as a float.
       </p>
 
       <pre><code class="language-c">float compute_average(vec_t(long) numbers) {
@@ -123,10 +125,7 @@
         to stdout.
       </p>
 
-      <pre><code class="language-c">vec_t(long) parse_numbers(int argc, char** argv);
-float compute_average(vec_t(long) numbers);+
-
-int main(int argc, char** argv) {
+      <pre><code class="language-c">int main(int argc, char** argv) {
     vec_t(long) numbers = parse_numbers(argc - 1, argv + 1);
 
     float average = compute_average(numbers);
@@ -141,6 +140,13 @@ int main(int argc, char** argv) {
       <pre><code class="language-none">> average_program 14 16 20
 average: 16.67
 </code></pre>
+
+      <p>
+        We've now seen a way in which vectors can be useful when writing C
+        programs! In the next section we'll take a closer look at what's going
+        on when passing a type into the vector type in an expression like
+        <code>vec_t(long)</code>.
+      </p>
 
       <h2>II. Generic Programming and Macros</h2>
       <p>
