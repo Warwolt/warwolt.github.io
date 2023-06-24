@@ -59,20 +59,17 @@
         by Sean Barrett.
       </p>
 
-      <h2>I. Example usage of vectors in C</h2>
+      <h2>I. Example of using vectors in C</h2>
       <p>
         Let's begin by taking a look at how vectors can be used in a simple C
         program, so we get a sense of the thing we're going to build.
       </p>
 
-      <h3>Calculating an average</h3>
-      <p></p>
-
       <p>
-        This example program takes some integer arguments on the command line
-        and calculates their average, and prints the result to stdout. The
-        program consists of three functions; <code>parse_numbers</code>,
-        <code>compute_average</code> and <code>main</code>.
+        This program takes a list of integers as argument on the command line
+        and prints their average to stdout. The program consists of three
+        functions; <code>parse_numbers</code>, <code>compute_average</code> and
+        <code>main</code>.
       </p>
 
       <p>
@@ -83,15 +80,6 @@
         is able to hold any amount of <code>long</code> values (error checking
         omitted for brevity).
       </p>
-
-      <aside class="callout">
-        <p>
-          <strong>Note:</strong> Already here we can notice that we'll be
-          putting preprocessor macros into use! The expression
-          <code>vec_t()</code> will turn out to be a macro that takes a typename
-          (like <code>long</code>) as argument.
-        </p>
-      </aside>
 
       <pre><code class="language-c">vec_t(long) parse_numbers(const char* strings[], size_t num_strings) {
     vec_t(long) numbers = vec_new(long);
@@ -104,13 +92,25 @@
     return numbers;
 }</code></pre>
 
+      <aside class="callout">
+        <p>
+          <strong>Note:</strong> Already here we can notice that we'll be
+          putting preprocessor macros into use. The expressions
+          <code>vec_t()</code>, <code>vec_new()</code>, and
+          <code>vec_push()</code> will turn out to be macros.
+        </p>
+      </aside>
+
       <p>
         Once the input has been parsed, we can take the numbers and compute
         their average with the
         <code>compute_average</code> function, which takes a
         <code>vector</code> as argument and then returns the average as a float.
-        Notice that the elements are accessed with the bracket operator 
-        <code>numbers[i]</code>, just like you would an ordinary array.
+      </p>
+
+      <p>
+        The elements are accessed with the <code>[]</code> bracket operator,
+        just like you would an ordinary array, in the expression <code>numbers[i]</code>.
       </p>
 
       <pre><code class="language-c">float compute_average(vec_t(long) numbers) {
@@ -120,7 +120,7 @@
         sum += numbers[i];
     }
 
-    return (float)sum / vec_size(numbers);
+    return sum / vec_size(numbers);
 }</code></pre>
 
       <p>
