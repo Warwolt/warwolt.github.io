@@ -22,9 +22,9 @@
   </header>
 
   <main>
+    <h1 class="post-title">Writing a vector in C</h1>
+    <time class="post-date" datetime="2023-06-22">June 22 2023</time>
     <article>
-      <h1 class="post-title">Writing a vector in C</h1>
-      <time class="post-date" datetime="2023-06-22">June 22th 2023</time>
       <p>
         This is an article about writing vectors in C99 (aka dynamic arrays).
         We're doing this for the fun of it, to see what can be done with the C
@@ -34,6 +34,26 @@
         >
         in such a simple setting like C provides.
       </p>
+
+      <p>
+        We'll implement vectors in C with a combination of preprocessor macros
+        and some clever memory layouting, with a trick that I first learnt from
+        <a
+          href="https://github.com/nothings/stb/blob/5736b15f7ea0ffb08dd38af21067c314d6a3aae9/tests/prerelease/stb_lib.h#L1159"
+          >stb.h</a
+        >
+        by Sean Barrett.
+      </p>
+
+      <p>
+        You can skip ahead directly to the
+        <a href="#implementing-the-vector">vector implementation part</a> of the
+        text if you want, as I will start by showing off an example usage of the
+        vector and then give some background on generic programming and
+        parameterized types.
+      </p>
+
+      <h3>What's a vector?</h3>
 
       <p>
         A dynamic array is called a Vector in C++ and Rust, and is called an
@@ -47,16 +67,6 @@
         added and removed from them, by storing the elements in heap memory and
         re-allocating that memory when needed, instead of storing the items in a
         fixed sized array in stack memory.
-      </p>
-
-      <p>
-        We'll implement vectors in C with a combination of preprocessor macros
-        and some clever memory layouting, with a trick that I first learnt from
-        <a
-          href="https://github.com/nothings/stb/blob/5736b15f7ea0ffb08dd38af21067c314d6a3aae9/tests/prerelease/stb_lib.h#L1159"
-          >stb.h</a
-        >
-        by Sean Barrett.
       </p>
 
       <h2>I. Example of using vectors in C</h2>
@@ -110,7 +120,8 @@
 
       <p>
         The elements are accessed with the <code>[]</code> bracket operator,
-        just like you would an ordinary array, in the expression <code>numbers[i]</code>.
+        just like you would an ordinary array, in the expression
+        <code>numbers[i]</code>.
       </p>
 
       <pre><code class="language-c">float compute_average(vec_t(long) numbers) {
@@ -128,14 +139,14 @@
         <code>main</code> function. The user input from stdin is passed into
         <code>parse_numbers</code> (skipping this first argument since that is
         just the executable name), and the average is then computed and printed
-        to stdout.
+        to stdout. Finally, the vector is freed with <code>vec_free()</code>.
       </p>
 
       <pre><code class="language-c">int main(int argc, char** argv) {
     vec_t(long) numbers = parse_numbers(argc - 1, argv + 1);
 
     float average = compute_average(numbers);
-    printf("average: %.2f \n", average);
+    printf("%.2f\n", average);
 
     vec_free(numbers);
     return 0;
@@ -143,43 +154,109 @@
 
       <p>Running this program gives the following ouput:</p>
 
-      <pre><code class="language-none">> average_program 14 16 20
-average: 16.67
+      <pre><code class="language-none">> ./average 14 16 20
+16.67
 </code></pre>
 
+      <h2>II. Vectors and Generic Programming</h2>
       <p>
-        In the next section we'll take a closer look at what's going on when
-        passing a type argument into the vector type in an expression like
-        <code>vec_t(long)</code>.
+        In this section will take a closer look at what's going on with the
+        expression <code>vec_t(long)</code>, where the typename
+        <code>long</code> appears as argument to another type
+        <code>vec_t</code>, and how types like <code>vec_t</code> can be used to
+        write re-usable code in a programming style called generic programming.
       </p>
 
-      <h2>II. Generic Programming and Macros</h2>
+      <h3>List sorting</h3>
       <p>
-        (Generic programming is a style of programming where types can be
-        parameterized)
+        In the scripting language
+        <a href="https://en.wikipedia.org/wiki/Lisp_(programming_language)"
+          >Lisp</a
+        >
+        , the primary data structure used is a <em>list</em>. The language comes
+        with many functions that operate on lists, like sorting and searching,
+        that work for <em>any</em>
+        lists no matter what items it contains, which allow for those functions
+        to be re-used in many different kinds of programs.
       </p>
 
-      <h3>What are Generics?</h3>
-      <p>(Pratical example from some languages, Java, C++, Haskell?)</p>
-      <p>(Short short history on Generics, what languages have them)</p>
       <p>
-        (Short theory behind the parallels to universal quantification in
-        programming)
+        Lists in Lisp are written e.g.
+        <code>'(3 1 2)</code> or <code>'("bob" "charlie" "alice")</code>. These
+        lists can then be sorted with the <code>sort</code> function. Both
+        <code>#'<</code> and <code>#'string<</code> are less-than-operators, and
+        are used as sorting predicates:
       </p>
 
-      <h3>Type parameters in C using Macros</h3>
-      <p>
-        (Given all this, how might we implement generics using C and Macros?)
-      </p>
-      <p>(Some very short simple examples)</p>
+      <pre><code class="language-lisp">(print (sort '(3 1 2) #'<))
+(print (sort '("bob" "charlie" "alice") #'string<))
+</code></pre>
 
-      <h2>III. Implementing the Vector</h2>
+      <p>Running the above program gives:</p>
+      <pre><code class="language-none">> ./sorting_program
+(1 2 3)
+("alice" "bob" "charlie")</code></pre>
+
+      <p>
+        Both lists were sorted with the same function <code>sort</code>, which
+        means once the <code>sort</code> function has been written, we can
+        re-use it for any kind of list we might need.
+      </p>
+
+      <h3>Pointers and arrays are parameterized types</h3>
+      <p>
+        When writing C programs, we're used to working with types like
+        <code>int</code>, <code>float</code>, enum types and struct types etc.
+        In addition to these we also have <em>pointer types</em> like
+        <code>int*</code>, <code>float*</code> and <em>array types</em> like
+        <code>int[]</code> and <code>float[]</code>.
+      </p>
+
+      <p>
+        What's particular about these latter two kinds of types is that we have
+        two components:
+      </p>
+
+      <ul>
+        <li>a type name like <code>int</code> or <code>float</code></li>
+        <li>the asterix <code>*</code> or bracket <code>[]</code> suffix</li>
+      </ul>
+
+      <p>
+        Both pointers and arrays are examples of <em>parameterized types</em>,
+        meaning that we have a type that act like a <em>function</em> from a
+        type to a type; they take a type as argument and then return a concrete
+        type back.
+      </p>
+
+      <p>
+        Parameterized types allow us to write <em>generic functions</em> that
+        allow a statically typed langauge to write functions that are flexible
+        like <code>sort</code> is in Lisp.
+      </p>
+
+      <h3>Functions operating on parameterized types</h3>
+      <p>
+        In a typed programming language, functions are defined with parameters
+        of some known types, and with a known return type. To write a function
+        like the Lisp `sort` function, however, we'd need to be able to
+        <em>generalize</em> functions with type parameters, just like
+        <code>vec_t</code> takes a type parameter.
+      </p>
+
+      <p></p>
+
+      <h2 id="implementing-the-vector">III. Implementing the Vector</h2>
       <p>(The STB memory layout trick)</p>
       <p>(Writing a concrete vector for int only)</p>
       <p>(Making it generic using macros)</p>
       <p>(Example program using it)</p>
 
-      <h2>IV. Summary</h2>
+      <h2>IV. Drawbacks</h2>
+      <p>(Type alias will give bad compiler error messages)</p>
+      <p>(Manual memory management is difficult and error prone)</p>
+
+      <h2>V. Summary</h2>
       <p>(We wrote a Vector as an example of Generic Programming in C)</p>
       <p>(What did we learn?)</p>
     </article>
