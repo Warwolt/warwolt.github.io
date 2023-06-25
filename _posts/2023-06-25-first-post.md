@@ -1,9 +1,10 @@
 ---
-layout: default
+layout: post
 title:  "My First Post"
 date:   2023-06-25 21:42:57 +0200
 ---
-Hello post
+
+This is a first temporary post as a placeholder until the real first post has finished being written :)
 
 ```c
 int main() {
@@ -18,5 +19,3 @@ int main() {
   return 0;
 }
 ```
-
-Is this highlighted yet?

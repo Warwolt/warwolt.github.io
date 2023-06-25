@@ -5,18 +5,22 @@ title: "About"
 
 <h1>Archive</h1>
 
+<!-- TODO: generate the year header tags -->
+<h2>2023</h2>
+
 {% for post in site.posts %}
 
-  {% capture year_of_current_post %}
-    {{ post.date | date: "%Y" }}
+  {% capture month_of_current_post %}
+    {{ post.date | date: "%B" }}
   {% endcapture %}
 
-  {% capture year_of_previous_post %}
-    {{ post.previous.date | date: "%Y" }}
+  {% capture month_of_previous_post %}
+    {{ post.previous.date | date: "%B" }}
   {% endcapture %}
 
+  
   {% if forloop.first %}
-    <h2>{{ year_of_current_post }}</h2>
+    <h3>{{ month_of_current_post }}</h3>
     <ul>
   {% endif %}
 
@@ -28,10 +32,10 @@ title: "About"
 
   {% if forloop.last %}
     </ul>
-  {% elsif year_of_current_post != year_of_previous_post %}
+  {% elsif month_of_current_post != month_of_previous_post %}
     </ul>
 
-    <h2>{{ year_of_previous_post }}</h2>
+    <h3>{{ month_of_previous_post }}</h3>
     <ul>
   {% endif %}
 
