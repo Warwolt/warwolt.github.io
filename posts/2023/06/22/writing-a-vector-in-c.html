@@ -189,51 +189,51 @@
         Both pointers and arrays are examples of <em>generic types</em>, meaning
         that we have a type that act like a <em>function</em> from a type to a
         type; they take a type as argument and then return a concrete type back.
-        With <code>T</code> as a type parameter, <code>T*</code> stands for a
-        generic pointer, and <code>T[]</code> stands for a generic array.
       </p>
 
-      <h3>Sorting lists in Lisp</h3>
-      <p>
-        Given that we have generic types, we can write functions that operate on
-        those types. Before looking at how this is done in C, we'll do a quick
-        detour with the scripting language
-        <a href="https://en.wikipedia.org/wiki/Lisp_(programming_language)"
-          >Lisp</a
-        >.
-      </p>
+      <p>With <code>T</code> as a type parameter, we have that:</p>
+      <ul>
+        <li><code>T*</code> is the generic type of all pointers</li>
+        <li><code>T[]</code> is the generic type of all arrays</li>
+      </ul>
 
       <p>
-        In Lisp, the primary data structure used is a <em>list</em>. The
-        language comes with many functions that operate on lists, like sorting
-        and searching, that work for <em>any</em>
-        lists no matter what items it contains, which allow for those functions
-        to be re-used in many different kinds of programs.
+        As we can see, there is some limited support for generic types in just
+        plain C. Later in this section we'll see how we can also emulate
+        <em>user defined</em> generic types.
+      </p>
+
+      <h3>Generic sorting function in C</h3>
+      <p>
+        Given that we have a generic type of arrays <code>T[]</code>, are we
+        able to write functions on that type? In languages like C++, Java, C#
+        and Haskell, it's possible to write functions that accept generic types
+        as arguments.
       </p>
 
       <p>
-        Lisp lists are written e.g.
-        <code>'(3 1 2)</code> or <code>'("bob" "charlie" "alice")</code>. These
-        lists can then be sorted with the <code>sort</code> function. Both
-        <code>#'<</code> and <code>#'string<</code> are less-than-operators, and
-        are used as sorting predicates:
+        As an example, if you want to sort a list in Java, you can use the
+        <code>void Collections.sort(List&lt;T&gt; list>)</code> function, where
+        <code>T</code> is a type parameter passed to the <code>List</code> type:
       </p>
 
-      <pre><code class="language-lisp">(print (sort '(3 1 2) #'<))
-(print (sort '("bob" "charlie" "alice") #'string<))
-</code></pre>
-
-      <p>Running the above program gives:</p>
-      <pre><code class="language-none">> ./sorting_program
-(1 2 3)
-("alice" "bob" "charlie")</code></pre>
+      (JAVA EXAMPLE)
 
       <p>
-        Both the number list and the string list was sorted using the same
-        function, <code>sort</code>.
+        The C language does not directly support writing these kinds of
+        functions. It is however still possible to emulate them, and the C
+        standard library does come with a generic sorting function:
       </p>
 
-      <h3>Sorting arrays in C</h3>
+      <pre><code class="language-c">// stdlib.h
+void qsort(
+  void* base,
+  size_t number,
+  size_t width,
+  int (__cdecl *compare )(const void *, const void *)
+);</code></pre>
+
+      <p>What's going on here? There's no type parameter</p>
 
       <h3>Implementing generic types in C</h3>
       <p>((Treating all types as sequences of bytes + using macros))</p>
