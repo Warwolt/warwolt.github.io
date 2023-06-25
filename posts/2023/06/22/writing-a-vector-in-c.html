@@ -49,8 +49,7 @@
         You can skip ahead directly to the
         <a href="#implementing-the-vector">vector implementation part</a> of the
         text if you want, as I will start by showing off an example usage of the
-        vector and then give some background on generic programming and generic
-        types.
+        vector and then talk a little about using generic types in C.
       </p>
 
       <h3>What's a vector?</h3>
@@ -158,16 +157,16 @@
 16.67
 </code></pre>
 
-      <h2>II. Vectors and Generic Programming</h2>
+      <h2>II. Generic types in C</h2>
       <p>
         In this section will take a closer look at what's going on with the
         expression <code>vec_t(long)</code>, where the typename
         <code>long</code> appears as argument to another type
-        <code>vec_t</code>, and how types like <code>vec_t</code> can be used to
-        write re-usable code in a programming style called generic programming.
+        <code>vec_t</code>, and how we can implement the idea of a "type of
+        types" in C.
       </p>
 
-      <h3>Generic types</h3>
+      <h3>Pointers and arrays as built in generic types</h3>
       <p>
         When writing C programs, we're used to working with types like
         <code>int</code>, <code>float</code> etc., and enum types and struct
@@ -194,39 +193,26 @@
         generic pointer, and <code>T[]</code> stands for a generic array.
       </p>
 
+      <h3>Sorting lists in Lisp</h3>
       <p>
-        The <code>vec_t(long)</code> type we saw in the average example program
-        similarly can be split into parts:
-      </p>
-
-      <ul>
-        <li>the type <code>vec_t</code> itself</li>
-        <li>the type argument <code>long</code></li>
-      </ul>
-
-      <p>
-        Generic types allow us to express <em>collections</em> like vectors,
-        hashmaps, trees and sets, that can be written once and then used for any
-        type.
-      </p>
-
-      <h3>Sorting lists</h3>
-      <p>Given that we have collections of things, what can we do with them?</p>
-
-      <p>
-        In the scripting language
+        Given that we have generic types, we can write functions that operate on
+        those types. Before looking at how this is done in C, we'll do a quick
+        detour with the scripting language
         <a href="https://en.wikipedia.org/wiki/Lisp_(programming_language)"
           >Lisp</a
-        >
-        , the primary data structure used is a <em>list</em>. The language comes
-        with many functions that operate on lists, like sorting and searching,
-        that work for <em>any</em>
+        >.
+      </p>
+
+      <p>
+        In Lisp, the primary data structure used is a <em>list</em>. The
+        language comes with many functions that operate on lists, like sorting
+        and searching, that work for <em>any</em>
         lists no matter what items it contains, which allow for those functions
         to be re-used in many different kinds of programs.
       </p>
 
       <p>
-        Lists in Lisp are written e.g.
+        Lisp lists are written e.g.
         <code>'(3 1 2)</code> or <code>'("bob" "charlie" "alice")</code>. These
         lists can then be sorted with the <code>sort</code> function. Both
         <code>#'<</code> and <code>#'string<</code> are less-than-operators, and
@@ -247,53 +233,10 @@
         function, <code>sort</code>.
       </p>
 
-      <h3>Functions operating on generic types</h3>
-      <p>
-        In a statically typed programming language like C, functions have
-        specific types for the parameters and return value. To be able to write
-        a function like the Lisp <code>sort</code> function in a statically
-        typed language, we need to be able to generalize functions with
-        <em>type parameters</em>.
-      </p>
+      <h3>Sorting arrays in C</h3>
 
-      <p>
-        Java is a statically typed language that supports generics. The sorting
-        function in the Java standard library has the following signature, where
-        <code>&lt;T&gt;</code> is the type parameter:
-      </p>
-
-      <pre><code class="language-java">void sort(List&lt;T&gt; list)</code></pre>
-
-      <p>A Java program corresponding to the earlier Lisp program would be:</p>
-
-      <pre><code class="language-java">public static void main(String[] args) {
-    List&lt;Integer&gt; numberList = new ArrayList&lt;Integer&gt;(Arrays.asList(2, 3, 1));
-    List&lt;String&gt; stringList = new ArrayList&lt;String&gt;(Arrays.asList("Bob", "Charlie", "Alice"));
-
-    Collections.sort(numberList);
-    Collections.sort(stringList);
-
-    System.out.println(numberList.toString());
-    System.out.println(stringList.toString());
-}
-</code></pre>
-
-      <p>
-        Running this gives:
-      </p>
-
-      <pre><code class="language-none">> ./sorting_program
-[1, 2, 3]
-[Alice, Bob, Charlie]</code></pre>
-
-      <p>
-        Whenever we take a specific algorithm, like sorting, and generalize it
-        with type parameters, we practice a style of programming called generic
-        programming.
-      </p>
-
-      <h3>Generics in C using macros</h3>
-      <p>((Macros as a kind of C++ templates))</p>
+      <h3>Implementing generic types in C</h3>
+      <p>((Treating all types as sequences of bytes + using macros))</p>
 
       <h2 id="implementing-the-vector">III. Implementing the Vector</h2>
       <p>(The STB memory layout trick)</p>
