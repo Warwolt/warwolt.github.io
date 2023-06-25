@@ -49,8 +49,8 @@
         You can skip ahead directly to the
         <a href="#implementing-the-vector">vector implementation part</a> of the
         text if you want, as I will start by showing off an example usage of the
-        vector and then give some background on generic programming and
-        parameterized types.
+        vector and then give some background on generic programming and generic
+        types.
       </p>
 
       <h3>What's a vector?</h3>
@@ -167,7 +167,51 @@
         write re-usable code in a programming style called generic programming.
       </p>
 
+      <h3>Generic types</h3>
+      <p>
+        When writing C programs, we're used to working with types like
+        <code>int</code>, <code>float</code> etc., and enum types and struct
+        types. In addition to these we also have <em>pointer types</em> like
+        <code>int*</code>, <code>float*</code> and <em>array types</em> like
+        <code>int[]</code> and <code>float[]</code>.
+      </p>
+
+      <p>
+        What's particular about these latter two kinds of types is that we have
+        two components:
+      </p>
+
+      <ul>
+        <li>a type name like <code>int</code> or <code>float</code></li>
+        <li>the asterix <code>*</code> or bracket <code>[]</code> suffix</li>
+      </ul>
+
+      <p>
+        Both pointers and arrays are examples of <em>generic types</em>, meaning
+        that we have a type that act like a <em>function</em> from a type to a
+        type; they take a type as argument and then return a concrete type back.
+        With <code>T</code> as a type parameter, <code>T*</code> stands for a
+        generic pointer, and <code>T[]</code> stands for a generic array.
+      </p>
+
+      <p>
+        The <code>vec_t(long)</code> type we saw in the average example program
+        similarly can be split into parts:
+      </p>
+
+      <ul>
+        <li>the type <code>vec_t(T)</code> itself</li>
+        <li>the type argument <code>long</code></li>
+      </ul>
+
+      <p>
+        Generic types allow us to express <em>collections</em> like vectors,
+        hashmaps, trees and sets that can be used for any type.
+      </p>
+
       <h3>List sorting</h3>
+      <p>Given that we have collections of things, what can we do with them?</p>
+
       <p>
         In the scripting language
         <a href="https://en.wikipedia.org/wiki/Lisp_(programming_language)"
@@ -203,45 +247,19 @@
         re-use it for any kind of list we might need.
       </p>
 
-      <h3>Pointers and arrays are parameterized types</h3>
+      <h3>Functions operating on generic types</h3>
       <p>
-        When writing C programs, we're used to working with types like
-        <code>int</code>, <code>float</code>, enum types and struct types etc.
-        In addition to these we also have <em>pointer types</em> like
-        <code>int*</code>, <code>float*</code> and <em>array types</em> like
-        <code>int[]</code> and <code>float[]</code>.
+        In a statically typed programming language like C, functions are defined
+        with parameters of some specific types and with a specific return type:
       </p>
 
-      <p>
-        What's particular about these latter two kinds of types is that we have
-        two components:
-      </p>
-
-      <ul>
-        <li>a type name like <code>int</code> or <code>float</code></li>
-        <li>the asterix <code>*</code> or bracket <code>[]</code> suffix</li>
-      </ul>
+      <pre><code class="language-c">int sum(int numbers[], size_t num_numbers)</code></pre>
 
       <p>
-        Both pointers and arrays are examples of <em>parameterized types</em>,
-        meaning that we have a type that act like a <em>function</em> from a
-        type to a type; they take a type as argument and then return a concrete
-        type back.
-      </p>
-
-      <p>
-        Parameterized types allow us to write <em>generic functions</em> that
-        allow a statically typed langauge to write functions that are flexible
-        like <code>sort</code> is in Lisp.
-      </p>
-
-      <h3>Functions operating on parameterized types</h3>
-      <p>
-        In a typed programming language, functions are defined with parameters
-        of some known types, and with a known return type. To write a function
-        like the Lisp `sort` function, however, we'd need to be able to
-        <em>generalize</em> functions with type parameters, just like
-        <code>vec_t</code> takes a type parameter.
+        To be able to write a function like the Lisp `sort` function, however,
+        we need to be able to <em>generalize</em> functions with
+        <em>type parameters</em>, just like how the data structure
+        <code>vec_t</code> has a type parameter.
       </p>
 
       <p></p>
