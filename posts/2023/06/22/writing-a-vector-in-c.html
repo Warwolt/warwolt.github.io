@@ -200,16 +200,17 @@
       </p>
 
       <ul>
-        <li>the type <code>vec_t(T)</code> itself</li>
+        <li>the type <code>vec_t</code> itself</li>
         <li>the type argument <code>long</code></li>
       </ul>
 
       <p>
         Generic types allow us to express <em>collections</em> like vectors,
-        hashmaps, trees and sets that can be used for any type.
+        hashmaps, trees and sets, that can be written once and then used for any
+        type.
       </p>
 
-      <h3>List sorting</h3>
+      <h3>Sorting lists</h3>
       <p>Given that we have collections of things, what can we do with them?</p>
 
       <p>
@@ -242,27 +243,57 @@
 ("alice" "bob" "charlie")</code></pre>
 
       <p>
-        Both lists were sorted with the same function <code>sort</code>, which
-        means once the <code>sort</code> function has been written, we can
-        re-use it for any kind of list we might need.
+        Both the number list and the string list was sorted using the same
+        function, <code>sort</code>.
       </p>
 
       <h3>Functions operating on generic types</h3>
       <p>
-        In a statically typed programming language like C, functions are defined
-        with parameters of some specific types and with a specific return type:
+        In a statically typed programming language like C, functions have
+        specific types for the parameters and return value. To be able to write
+        a function like the Lisp <code>sort</code> function in a statically
+        typed language, we need to be able to generalize functions with
+        <em>type parameters</em>.
       </p>
-
-      <pre><code class="language-c">int sum(int numbers[], size_t num_numbers)</code></pre>
 
       <p>
-        To be able to write a function like the Lisp `sort` function, however,
-        we need to be able to <em>generalize</em> functions with
-        <em>type parameters</em>, just like how the data structure
-        <code>vec_t</code> has a type parameter.
+        Java is a statically typed language that supports generics. The sorting
+        function in the Java standard library has the following signature, where
+        <code>&lt;T&gt;</code> is the type parameter:
       </p>
 
-      <p></p>
+      <pre><code class="language-java">void sort(List&lt;T&gt; list)</code></pre>
+
+      <p>A Java program corresponding to the earlier Lisp program would be:</p>
+
+      <pre><code class="language-java">public static void main(String[] args) {
+    List&lt;Integer&gt; numberList = new ArrayList&lt;Integer&gt;(Arrays.asList(2, 3, 1));
+    List&lt;String&gt; stringList = new ArrayList&lt;String&gt;(Arrays.asList("Bob", "Charlie", "Alice"));
+
+    Collections.sort(numberList);
+    Collections.sort(stringList);
+
+    System.out.println(numberList.toString());
+    System.out.println(stringList.toString());
+}
+</code></pre>
+
+      <p>
+        Running this gives:
+      </p>
+
+      <pre><code class="language-none">> ./sorting_program
+[1, 2, 3]
+[Alice, Bob, Charlie]</code></pre>
+
+      <p>
+        Whenever we take a specific algorithm, like sorting, and generalize it
+        with type parameters, we practice a style of programming called generic
+        programming.
+      </p>
+
+      <h3>Generics in C using macros</h3>
+      <p>((Macros as a kind of C++ templates))</p>
 
       <h2 id="implementing-the-vector">III. Implementing the Vector</h2>
       <p>(The STB memory layout trick)</p>
