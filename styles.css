@@ -39,12 +39,7 @@ footer {
 }
 
 p {
-  margin-block-start: 0em;
   line-height: 1.4;
-}
-
-.callout p {
-  margin-block-start: 1em;
 }
 
 h1, h2, h3 {
@@ -58,11 +53,11 @@ time {
 }
 
 code[class*=language-] {
-  font-size: 0.9em;
+  font-size: 0.95em;
 }
 
 pre[class*=language-] {
-  padding: 0.9em;
+  padding: 0.95em;
 }
 
 code:not([class]) {
