@@ -1,0 +1,38 @@
+---
+layout: default
+title: "About"
+---
+
+<h1>Archive</h1>
+
+{% for post in site.posts %}
+
+  {% capture year_of_current_post %}
+    {{ post.date | date: "%Y" }}
+  {% endcapture %}
+
+  {% capture year_of_previous_post %}
+    {{ post.previous.date | date: "%Y" }}
+  {% endcapture %}
+
+  {% if forloop.first %}
+    <h2>{{ year_of_current_post }}</h2>
+    <ul>
+  {% endif %}
+
+  <li>
+    <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_string }}</time>
+    —
+    <a href="{{ post.url }}">{{ post.title }}</a>
+  </li>
+
+  {% if forloop.last %}
+    </ul>
+  {% elsif year_of_current_post != year_of_previous_post %}
+    </ul>
+
+    <h2>{{ year_of_previous_post }}</h2>
+    <ul>
+  {% endif %}
+
+{% endfor %}
