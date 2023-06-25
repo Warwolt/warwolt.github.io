@@ -65,8 +65,10 @@ pre[class*=language-] {
 }
 
 code:not([class]) {
+  display: inline-block;
   background-color: rgba(175,184,193,.2);
   padding: 0.1em 0.4em;
+  margin: 1px;
   border-radius: 6px;
   font-size: 0.9em;
   font-family: consolas
