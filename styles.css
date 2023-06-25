@@ -6,6 +6,7 @@ body {
   margin: 0 auto;
   padding-left: 12px;
   padding-right: 12px;
+  font-family: sans-serif;
 }
 
 header {
@@ -39,6 +40,10 @@ footer {
 p {
   margin-block-start: 0em;
   line-height: 1.2;
+}
+
+.callout p {
+  margin-block-start: 1em;
 }
 
 h1, h2, h3 {
@@ -88,7 +93,6 @@ code:not([class]) {
   background-color: rgb(229, 243, 254);
   border: 1px solid rgb(205,205,205);
   border-radius: 0.25rem;
-  padding-top: 10px;
   padding-left: 16px;
   padding-right: 16px;
   margin-top: 20px;;
