@@ -49,7 +49,7 @@ h1, h2, h3 {
 
 time {
   display: inline-block;
-  margin-bottom: 10px;
+  font-style: italic;
 }
 
 code[class*=language-] {
