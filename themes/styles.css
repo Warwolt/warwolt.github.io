@@ -7,7 +7,7 @@ body {
   padding-left: 12px;
   padding-right: 12px;
   font-family: sans-serif;
-  font-size: 90%;
+  font-size: 100%;
 }
 
 header {
@@ -51,7 +51,7 @@ footer {
 }
 
 p {
-  line-height: 1.4;
+  line-height: 1.6;
 }
 
 a {
