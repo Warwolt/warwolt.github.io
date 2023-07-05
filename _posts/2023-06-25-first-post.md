@@ -17,6 +17,7 @@ int main() {
   vec_free(vec);
 
   const char hello = "hello word";
+  int x = 2 + 3;
 
   return 0;
 }

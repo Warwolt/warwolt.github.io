@@ -83,7 +83,7 @@ pre[class*=language-] {
 .token.operator,
 .token.url,
 .token.variable {
-    color: #f8f8f2
+    color: rgb(255, 97, 136)
 }
 
 .token.atrule,
