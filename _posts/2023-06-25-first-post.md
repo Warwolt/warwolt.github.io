@@ -4,7 +4,13 @@ title:  "My First Post"
 date:   2023-06-25 21:42:57 +0200
 ---
 
-This is a first temporary post as a placeholder until the real first post has finished being written :)
+This is a first temporary post as a placeholder until the real first post has finished being written.
+
+Here's a math formula:
+
+$$
+\angle AC = \angle AB + \angle BC
+$$
 
 ```c++
 #include <bits/stdc++.h>
