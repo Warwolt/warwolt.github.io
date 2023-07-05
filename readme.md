@@ -9,67 +9,84 @@ Serve locally:
 bundle exec jekyll serve
 ```
 
-```C
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
+```C++
+#include <bits/stdc++.h> // includes most of the useful libraries
+#include "mainwindow.h"
 
-void test_function()
+using namespace std;
+
+/* This C++ program was submitted to help bat
+ * with its syntax highlighting tests
+ */
+
+bool test_function(int x, int y)
 {
-#define TEST
-#ifdef TEST
-    printf("TEST is defined\n");
-#endif
+    return (x == y || x + y == x * y);
 }
 
-struct Node
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent), ui(new Ui::MainWindow)
 {
-    int val;
-    struct Node *next;
-};
+    ui->setupUi(this);
+    resize(560, 420);
+    // Image menu
+    connect(ui->actionOpen, &QAction::triggered, this, &MainWindow::open);
+    MainWindow::~MainWindow()
+    {
+        delete ui;
+    }
+    int y = ui->graphicsView->size().height() - image.height();
+    int x = ui->graphicsView->size().width() - image.width();
 
-int main(int argc, char **argv)
+    void MainWindow::showImage()
+    {
+        // Reset scale
+        ui->graphicsView->resetMatrix();
+
+        statusBar()->showMessage(QString("%1 %2x%3px %4 kB").arg(file.fileName()).arg(image.width()).arg(image.height()).arg(QFile(currentFile).size() / 1000.0));
+    }
+}
+
+int main()
 {
-    /* This C program was written to help bat
-     * with its syntax highlighting tests
-     */
+    int tc;
+    cin >> tc;
+    while (tc--) // for each test case
+    {
+        int n;
+        cin >> n; // take n
+        vector<pair<int, string>> v;
 
-    // Calling test function
-    test_function();
-    struct Node *head = NULL;
-    head = (struct Node *)malloc(sizeof(struct Node *));
-    head->val = -1;
-    if (head->val == 1 * -1)
-    {
-        head->val = 10;
-    }
-    else
-    {
-        head->val = argc;
-    }
-    int t = head->val, count = 0;
-    free(head);
-    while (t--)
-    {
-        count++;
-    }
-    for (int i = t; i < count; ++i)
-    {
-        do
+        int a[n], b[n];
+
+        for (int i = 0; i < n; i++)
+            cin >> a[i]; // take arrays
+        for (int i = 0; i < n; i++)
+            cin >> b[i];
+
+        priority_queue<int> pq; // inbuilt data structure - max heap (available in the bits/stdc++)
+
+        for (int i = 0; i < n; i++)
+            pq.push(a[i]); // push elements into heap
+
+        for (int i = 0; i < n; i++) // for each element in B
         {
-            --count;
-        } while (false);
+            int top_ele = pq.top();  // max element in heap
+            pq.pop();                // deletion
+            pq.push(top_ele ^ b[i]); // push after operation
+        }
+
+        for (int i = n - 1; i >= 0; i--) // restore A in ascending order
+        {
+            a[i] = pq.top();
+            pq.pop();
+        }
+
+        for (int i = 0; i < n; i++)
+            cout << a[i] << " "; // print A
+
+        cout << endl;
     }
-    enum chars
-    {
-        M,
-        I,
-        T,
-        H,
-        L
-    };
-    char *string = "string";
-    printf("true is #define true %d\n", true);
     return 0;
 }
 ```
