@@ -8,3 +8,9 @@ Serve locally:
 ```
 bundle exec jekyll serve
 ```
+
+Serve on all ports, for testing on phone:
+
+```
+bundle exec jekyll serve --host=0.0.0.0
+```
