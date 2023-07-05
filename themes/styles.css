@@ -68,7 +68,7 @@ header a:hover {
   display: none;
 }
 
-@media (max-width: 425px) {
+@media (max-width: 458px) {
   header {
     display: flex;
     flex-direction: column;
@@ -116,7 +116,7 @@ header a:hover {
   display: block;
 }
 
-@media (max-width: 425px) {
+@media (max-width: 458px) {
   .site-header-nav {
     display: none;
   }
