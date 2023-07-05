@@ -28,23 +28,28 @@ header {
   border-bottom: 1px solid black;
 }
 
-header nav a {
-  margin-block-start: 1em;
-  margin-block-end: 1em;
+.site-header-top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header a {
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
   text-decoration: none;
+  padding: 0.5em;
   color: black;
   border-radius: 6px;
 }
 
-.site-header-top {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+header a:hover {
+  background-color: rgb(246, 246, 246);
 }
 
-.site-header-top a {
-  margin-block-start: 1em;
-  margin-block-end: 1em;
+.site-header-nav {
+  padding-right: 0.5em;
 }
 
 .site-header-nav ul {
