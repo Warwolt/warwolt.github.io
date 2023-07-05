@@ -4,7 +4,7 @@ title: About
 ---
 # About
 
-<img class="portrait-image" src="images/portrait.png" alt="A picture of Rasmus Källqvist" />
+<img class="portrait-image" src="assets/images/portrait.png" alt="A picture of Rasmus Källqvist" />
 
 This is the personal web page of Rasmus Källqvist, where I write about
 Programming and Mathematics.
