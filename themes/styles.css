@@ -125,6 +125,15 @@ header a:hover {
     display: block;
   }
 
+  .site-header-nav ul li {
+    padding: 0;
+    text-align: center;
+  }
+
+  .site-header-nav ul li a {
+    display: block;
+  }
+
   .hamburger-bar {
     width: 1.75em;
     height: 2px;
