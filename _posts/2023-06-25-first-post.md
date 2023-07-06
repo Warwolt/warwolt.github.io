@@ -12,6 +12,10 @@ $$
 \angle AC = \angle AB + \angle BC
 $$
 
+\begin{equation}
+   E = mc^2
+\end{equation}
+
 ```c++
 #include <bits/stdc++.h>
 #include "mainwindow.h"
