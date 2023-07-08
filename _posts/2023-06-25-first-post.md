@@ -12,9 +12,24 @@ $$
 \angle AC = \angle AB + \angle BC
 $$
 
+Here's a numbered math formula:
+
 \begin{equation}
    E = mc^2
 \end{equation}
+
+And here's a Tikz figure:
+
+<figure>
+    <script type="text/tikz">
+        \begin{tikzpicture}
+        \draw (0,0) circle (1in);
+            \end{tikzpicture}
+    </script>
+    <figcaption>Fig 1, a circle.</figcaption>
+</figure>
+
+Here is some C++ code:
 
 ```c++
 #include <bits/stdc++.h>
