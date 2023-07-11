@@ -466,7 +466,7 @@ let abc = equilateral_triangle({a, b})
 
 Working through the *Elements*, you get a sense how something big and complex can be
 built out of smaller parts, and how we can have an understanding of that complex
-thing through our understanding those parts.
+thing through our understanding of those parts.
 
 ## Closing remarks
 
