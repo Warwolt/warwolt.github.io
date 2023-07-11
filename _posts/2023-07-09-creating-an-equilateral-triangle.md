@@ -45,7 +45,7 @@ All the figures in the *Elements* are constructed using the straightedge and a c
 
 A straightedge is like a ruler without markings on it, and is used to draw
 straight lines (but not to measure them), and a compass is a two-legged tool for
-drawing circle, by fixing one leg in a point and spinning the other leg (with a
+drawing circles, by fixing one leg in a point and spinning the other leg (with a
 pen attached).
 
 <figure>
