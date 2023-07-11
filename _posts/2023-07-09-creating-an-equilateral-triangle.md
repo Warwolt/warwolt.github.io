@@ -257,6 +257,7 @@ radii to the same circle $\bigcirc A$:
     <script type="text/tikz">
         \begin{tikzpicture}[scale=1.25, transform shape]
             \draw[dotted] (0,0) circle (3);
+            \draw[dotted] (3,0) circle (3);
             \draw[thick]
                 (0.5 * 3, 0.866 * 3) node[above]{C}
                 -- (0,0) node[left]{A}
@@ -286,6 +287,7 @@ that the figure is symmetrical, such that both $AB$ and $BC$ are equal radii to 
 <figure>
     <script type="text/tikz">
         \begin{tikzpicture}[scale=1.25, transform shape]
+            \draw[dotted] (0,0) circle (3);
             \draw[dotted] (3,0) circle (3);
             \draw[thick]
                 (0.5 * 3, 0.866 * 3) node[above]{C}
