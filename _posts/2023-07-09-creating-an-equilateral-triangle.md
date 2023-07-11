@@ -423,15 +423,15 @@ that is to be constructed uses steps from other propositions as building blocks.
     <figcaption>finished construction for Proposition 2</figcaption>
 </figure>
 
-Already in Proposition 2, a given line segment $BC$ is to be moved to coincide
-with a given point $A$, and one of the steps is to use Proposition 1 to form an
+Already in Proposition 2, where a given line segment $BC$ is to be moved to coincide
+with a given point $A$, one of the steps is to use Proposition 1 to form an
 equilateral triangle $\Delta ABD$ from line $AB$.
 
 Not only are the constructions composable, but the *proofs* also compose. We can
 rely on all the properties of the equilateral triangle that was shown in
-Proposition 1 when reasoning properties of the construction in Proposition 2.
+Proposition 1 when reasoning about the properties of the construction in Proposition 2.
 
-Every proposition in *Elements* build upon the previous ones in this fashion.
+Every proposition in the *Elements* build upon the previous ones in this fashion.
 
 ### Constructive geometry and computer programs
 
