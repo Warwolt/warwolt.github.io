@@ -4,7 +4,7 @@ title:  "Introduction to Euclidian Geometry: Creating an equilateral triangle fr
 excerpt_separator: <!--more-->
 ---
 
-I'm currently reading reading [Euclid's *Elements*](https://en.wikipedia.org/wiki/Euclid%27s_Elements),
+I'm currently reading reading Euclid's [*Elements*](https://en.wikipedia.org/wiki/Euclid%27s_Elements),
 which is a geometry text book where figures are constructed using a straightedge a compass.
 
 This post is about the first proposition in the *Elements*; creating an equilateral
@@ -383,6 +383,10 @@ This means that the triangle we constructed from the line segment is
 equilateral, which was what we wanted to do.
 
 This concludes the proof.
+
+$
+\text{Q.E.F.}
+$
 
 ## Composing propositions
 
