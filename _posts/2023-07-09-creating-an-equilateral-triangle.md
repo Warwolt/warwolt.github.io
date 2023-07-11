@@ -372,8 +372,9 @@ So, we now know that $AC = BC$.
 
 ### Equality of all three sides
 
-We now know all three of the statements $AB = AC$, $AB = BC$ and $AC = BC$,
-consequently we know that $AB = AC = BC$.
+We now know all three of the statements $AB = AC$, $AB = BC$ and $AC = BC$.
+
+Consequently we know that $AB = AC = BC$.
 
 In other words, we know that all three sides of the triangle we constructed are
 equal each to other.
@@ -419,8 +420,12 @@ that is to be constructed uses steps from other propositions as building blocks.
 
 
 Already in Proposition 2, a given line segment $BC$ is to be moved to coincide
-with a given point $A$, and one of the steps is to use Proposition 1 to form an equilateral triangle
-$\Delta ABD$ from line $AB$.
+with a given point $A$, and one of the steps is to use Proposition 1 to form an
+equilateral triangle $\Delta ABD$ from line $AB$.
+
+Not only are the constructions composable, but the *proofs* also compose.
+Proposition 2 will be able to rely on all the properties of the equilateral
+triangle that was shown in Proposition 1.
 
 ### Constructive geometry and computer programs
 
