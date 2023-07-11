@@ -423,9 +423,9 @@ Already in Proposition 2, a given line segment $BC$ is to be moved to coincide
 with a given point $A$, and one of the steps is to use Proposition 1 to form an
 equilateral triangle $\Delta ABD$ from line $AB$.
 
-Not only are the constructions composable, but the *proofs* also compose.
-Proposition 2 will be able to rely on all the properties of the equilateral
-triangle that was shown in Proposition 1.
+Not only are the constructions composable, but the *proofs* also compose. We can
+rely on all the properties of the equilateral triangle that was shown in
+Proposition 1 when reasoning properties of the construction in Proposition 2.
 
 ### Constructive geometry and computer programs
 
@@ -451,6 +451,12 @@ function equilateral_triangle({a, b}: Segment) {
     let c = intersection(circle_a, circle_b)[0] // pick first intersection
     return Triangle(a, b, c)
 }
+```
+
+We can then imagine psuedocode for other propositions calling this function:
+
+```ts
+let abc = equilateral_triangle({a, b})
 ```
 
 Working through the *Elements*, you get a sense how something big and complex can be
