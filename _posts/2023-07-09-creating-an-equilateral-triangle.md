@@ -53,7 +53,7 @@ pen attached).
 <figcaption>ruler used as straightedge (left), a compass (right), a pen (bottom) and paper</figcaption>
 </figure>
 
-When working with a straightedge and compass, we halso have to have some plane
+When working with a straightedge and compass, we also have to have some plane
 to draw _onto_. This could be a blackboard, a piece of paper, the sand at the
 beach, or a computer screen.
 
@@ -93,7 +93,7 @@ The compass can create a circle from a given line segment, by placing each leg
 on the respective end points of the segment, and spinning the compass around the
 fixed leg.
 
-The point that compass rests on is called the circle's *center*, and the line segment is called it's *radius*.
+The point that compass fixes on is called the circle's *center*, and the line segment is called its *radius*.
 
 <figure>
 <img src="/assets/images/2023-07-09/draw_circle.jpg" alt="A compass being used to rotate a pen around a point to draw a circle">
@@ -113,7 +113,7 @@ $\bigcirc A$.
 We now have tools and know how to use them, so we can start with constructing
 the equilateral triangle.
 
-The theory of the *Elements* is presented through a series of problems with solutions,
+The theory of the *Elements* is presented through a series of problems and solutions,
 where each problem is called a proposition. Each proposition begins with a
 statement of what is to be done, where the first proposition states the
 following problem:
@@ -173,7 +173,7 @@ And then do the same with point $B$ and segment $AB$ to form circle $\bigcirc B$
 We now have two circles, and can note that they're overlapping each other.
 
 When working with pen and paper, we can focus our eyes on where the circles are
-intersecting, and place the pen as close as possible the intersection and form a
+intersecting, and place the pen as close as possible to the intersection and form a
 point there.
 
 In the idealized case, we assume that we have *perfect* eye sight, and can place
@@ -214,7 +214,7 @@ and $BC$:
     <figcaption>joining the segments AC and BC.</figcaption>
 </figure>
 
-The finished result is a triangle:
+The finished result is this triangle:
 
 <figure>
     <script type="text/tikz">
@@ -236,8 +236,8 @@ This concludes the construction.
 Given the triangle that was constructed, we may ask: is it an *equilateral*
 triangle?
 
-Since the figure consists of three segments, we know that it is a triangle. Next
-we'll prove that these three sides are equal to each other.
+Since the figure consists of three segments, we know that it is a triangle. Next,
+we'll prove that these three sides all equal each other.
 
 ### Equality of $AB$ and $AC$
 
@@ -298,7 +298,7 @@ that the figure is symmetrical, such that both $AB$ and $BC$ are equal radii to 
     <figcaption>Line AC and AB as equal radii.</figcaption>
 </figure>
 
-Because of this symmetry, we now also know that $AB$ and $BC$ are equal.
+Because of this symmetry, we now know that $AB$ and $BC$ are equal.
 
 ### Equality of $AC$ and $BC$
 
@@ -310,7 +310,9 @@ $$
 \end{equation}
 $$
 
-To prove this, we'll use Axiom 1 from the *Elements*:
+An axiom is a statement that is accepted as true as the basis for an argument.
+
+To prove $(3)$, we'll use Axiom 1 from the *Elements*:
 
 > Things which equal the same thing also equal one another.
 
@@ -333,7 +335,7 @@ $$
 The statements above the line are called the premises, and the statement below
 the line is called the conclusion.
 
-If, after substituting the variables $X$, $Y$ and $Z$, the premises are both
+If, after substituting the variables $X$, $Y$ and $Z$, the premises are
 true, then the conclusion will also be true.
 
 We can plug in equations $(1)$, $(2)$ and $(3)$ into Axiom 1 to get:
@@ -421,7 +423,6 @@ that is to be constructed uses steps from other propositions as building blocks.
     <figcaption>finished construction for Proposition 2</figcaption>
 </figure>
 
-
 Already in Proposition 2, a given line segment $BC$ is to be moved to coincide
 with a given point $A$, and one of the steps is to use Proposition 1 to form an
 equilateral triangle $\Delta ABD$ from line $AB$.
@@ -430,20 +431,21 @@ Not only are the constructions composable, but the *proofs* also compose. We can
 rely on all the properties of the equilateral triangle that was shown in
 Proposition 1 when reasoning properties of the construction in Proposition 2.
 
+Every proposition in *Elements* build upon the previous ones in this fashion.
+
 ### Constructive geometry and computer programs
 
-The triangle was constructed through a series of explicit instructions, that had
+The equilateral triangle was constructed through a series of explicit instructions, that had
 the line segment $AB$ as a premise. Another way of viewing this is that the
 segment is a *parameter* of the construction, which we can view as a sort of
-procedure.
+procedure, that accepts a segment and produces a triangle:
 
 $$
 \text{Proposition1} : \text{Segment} \rightarrow \text{EquilateralTriangle}
 $$
 
-When the propositions in the *Elements* are built up by using earlier
-propositions, there's a parallel to how functions in computer programs are
-composed together.
+The way propositions in the *Elements* are built up by using earlier
+propositions has a parallel to how functions in computer programs are composed out of other functions.
 
 The construction in Proposition 1 can be expressed with this psuedocode:
 
@@ -463,13 +465,13 @@ let abc = equilateral_triangle({a, b})
 ```
 
 Working through the *Elements*, you get a sense how something big and complex can be
-built out of smaller parts, and how we can have an understanding of the complex
-thing by understanding its parts.
+built out of smaller parts, and how we can have an understanding of that complex
+thing through our understanding those parts.
 
 ## Closing remarks
 
 If you enjoyed this post, I encourage you to get hold of a ruler and a compass
-and trying this construction for yourself. Reading about math is one thing,
+and trying out this construction for yourself. Reading about math is one thing,
 practicing it is another!
 
 <figure>
