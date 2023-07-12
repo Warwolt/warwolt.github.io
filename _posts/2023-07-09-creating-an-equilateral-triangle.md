@@ -45,8 +45,8 @@ All the figures in the *Elements* are constructed using the straightedge and a c
 
 A straightedge is like a ruler without markings on it, and is used to draw
 straight lines (but not to measure them), and a compass is a two-legged tool for
-drawing circles, by fixing one leg in a point and spinning the other leg (with a
-pen attached).
+drawing circles, by fixing one leg in a point and spinning the other leg around
+(with a pen attached).
 
 <figure>
 <img src="/assets/images/2023-07-09/ruler_and_compass.jpg" alt="Straightedge and compass">
@@ -93,7 +93,8 @@ The compass can create a circle from a given line segment, by placing each leg
 on the respective end points of the segment, and spinning the compass around the
 fixed leg.
 
-The point that compass fixes on is called the circle's *center*, and the line segment is called its *radius*.
+The point that the compass fixes on is called the circle's *center*, and the
+line segment is called its *radius*.
 
 <figure>
 <img src="/assets/images/2023-07-09/draw_circle.jpg" alt="A compass being used to rotate a pen around a point to draw a circle">
@@ -101,12 +102,10 @@ The point that compass fixes on is called the circle's *center*, and the line se
 </figure>
 
 The same circle can have any number of radii, since we can draw any number of
-segments from the center out to the circle. Each of these radii will equal to
+segments from the center out to the circle. Each of these radii will equal
 each other in length.
 
-Because of this, we can refer to a circle by just it's center point, e.g. $A$.
-To make it clear that we refer to a circle, we prefix the name with a ring, like
-$\bigcirc A$.
+We refer to a circle by its center point, prefixed with a ring, like $\bigcirc A$.
 
 ## Constructing the triangle
 
@@ -120,9 +119,9 @@ following problem:
 
 > To construct an equilateral triangle on a given finite straight line.
 
-The premise of this problem is that there is already some line segment given. A
-triangle is to be constructed from this segment where each side equal the others
-in length.
+The premise of this problem is that there is pre-existing line segment given,
+and that a triangle is to be constructed from this segment where each side
+equal the others in length.
 
 Since we don't have a line segment yet, we'll create two points $A$ and $B$ and
 join them into a segment $AB$ using Postulate 1:
@@ -280,8 +279,9 @@ $$
 \end{equation}
 $$
 
-This follows by the same argument as we made for equation $\eqref{eq:ab-bc}$, by observing
-that the figure is symmetrical, such that both $AB$ and $BC$ are equal radii to circle $\bigcirc B$:
+This follows by the same argument as we made for $\eqref{eq:ab-ac}$, by
+observing that the figure is symmetrical, such that both $AB$ and $BC$ are equal
+radii to circle $\bigcirc B$:
 
 <figure>
     <script type="text/tikz">
@@ -310,8 +310,10 @@ $$
 \end{equation}
 $$
 
-An axiom is a statement that is accepted as true as the basis for an argument.
-To prove $\eqref{eq:ac-bc}$, we'll use Axiom 1 from the *Elements*:
+To prove this we'll use an axiom from *Elements*, where an axiom is a statement
+that is accepted as true as the basis for an argument.
+
+Axiom 1 of the *Elements* reads:
 
 > Things which equal the same thing also equal one another.
 
@@ -334,7 +336,7 @@ $$
 The statements above the line are called the premises, and the statement below
 the line is called the conclusion.
 
-If, after substituting the variables $X$, $Y$ and $Z$, the premises are
+If, after substituting the variables $X$, $Y$, and $Z$, the premises are
 true, then the conclusion will also be true.
 
 We can plug in equations $\eqref{eq:ab-ac}$, $\eqref{eq:ab-bc}$ and
@@ -427,9 +429,11 @@ Already in Proposition 2, where a given line segment $BC$ is to be moved to coin
 with a given point $A$, one of the steps is to use Proposition 1 to form an
 equilateral triangle $\Delta ABD$ from line $AB$.
 
-Not only are the constructions composable, but the *proofs* also compose. We can
-rely on all the properties of the equilateral triangle that was shown in
-Proposition 1 when reasoning about the properties of the construction in Proposition 2.
+Not only are the constructions composable, but the *proofs* also compose.
+
+We can rely on all the properties of the equilateral triangle that was shown in
+Proposition 1 when reasoning about the properties of the construction in
+Proposition 2.
 
 Every proposition in the *Elements* build upon the previous ones in this fashion.
 
