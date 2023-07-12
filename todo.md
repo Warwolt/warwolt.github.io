@@ -1,9 +1,9 @@
 # TODO
-- [ ] A way to refer to equations by ID, that is replaced by the equation number when rendering
 - [ ] Add comment sections
 - [ ] Make images show large version when clicked
 
 # Done
+- [x] A way to refer to equations by ID.
 - [x] Add syntax highlighting for code
 - [x] Add hamburger menu for mobile navigation
 - [x] Write a blog post

@@ -173,6 +173,11 @@ a {
   text-decoration: none;
 }
 
+span a {
+  color: black;
+  text-decoration: none;
+}
+
 time {
   display: inline-block;
   font-style: italic;

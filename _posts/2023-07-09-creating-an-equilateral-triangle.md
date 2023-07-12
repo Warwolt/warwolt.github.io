@@ -244,7 +244,7 @@ we'll prove that these three sides all equal each other.
 We'll start by claiming that $AB$ and $AC$ are equal segments:
 
 $$
-\begin{equation}
+\begin{equation}\label{eq:ab-ac}
    AB = AC
 \end{equation}
 $$
@@ -275,12 +275,12 @@ equal, so consequently we now know that $AB$ and $AC$ are equal.
 The second claim we'll make is that $AB$ and $BC$ are equal:
 
 $$
-\begin{equation}
+\begin{equation}\label{eq:ab-bc}
    AB = BC
 \end{equation}
 $$
 
-This follows by the same argument as we made for equation $(1)$, by observing
+This follows by the same argument as we made for equation $\eqref{eq:ab-bc}$, by observing
 that the figure is symmetrical, such that both $AB$ and $BC$ are equal radii to circle $\bigcirc B$:
 
 <figure>
@@ -305,14 +305,13 @@ Because of this symmetry, we now know that $AB$ and $BC$ are equal.
 The third equality we'll claim is the following:
 
 $$
-\begin{equation}
+\begin{equation}\label{eq:ac-bc}
    AC = BC
 \end{equation}
 $$
 
 An axiom is a statement that is accepted as true as the basis for an argument.
-
-To prove $(3)$, we'll use Axiom 1 from the *Elements*:
+To prove $\eqref{eq:ac-bc}$, we'll use Axiom 1 from the *Elements*:
 
 > Things which equal the same thing also equal one another.
 
@@ -338,7 +337,8 @@ the line is called the conclusion.
 If, after substituting the variables $X$, $Y$ and $Z$, the premises are
 true, then the conclusion will also be true.
 
-We can plug in equations $(1)$, $(2)$ and $(3)$ into Axiom 1 to get:
+We can plug in equations $\eqref{eq:ab-ac}$, $\eqref{eq:ab-bc}$ and
+$\eqref{eq:ac-bc}$ into Axiom 1 to get:
 
 $$
 \begin{equation}
