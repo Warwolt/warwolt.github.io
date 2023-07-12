@@ -416,7 +416,7 @@ that is to be constructed uses steps from other propositions as building blocks.
                 -- (-75:1) node[left]{A}
                 -- (-15:1);
             \draw  (-75:1)
-                -- (-75:3) node[anchor=south east]{L}
+                -- (-75:3) node[anchor=south east]{H}
                 -- (-75:4) node[anchor=south east]{E};
         \end{tikzpicture}
     </script>
