@@ -435,17 +435,18 @@ Every proposition in the *Elements* build upon the previous ones in this fashion
 
 ### Constructive geometry and computer programs
 
-The equilateral triangle was constructed through a series of explicit instructions, that had
-the line segment $AB$ as a premise. Another way of viewing this is that the
-segment is a *parameter* of the construction, which we can view as a sort of
-procedure, that accepts a segment and produces a triangle:
+The equilateral triangle was constructed through a series of explicit
+instructions that had the line segment $AB$ as a *premise*. Another way of
+viewing this is that the segment is a *parameter* of the construction, which we
+can view as a sort of procedure, that accepts a segment and produces a triangle:
 
 $$
 \text{Proposition1} : \text{Segment} \rightarrow \text{EquilateralTriangle}
 $$
 
 The way propositions in the *Elements* are built up by using earlier
-propositions has a parallel to how functions in computer programs are composed out of other functions.
+propositions has a parallel to how functions in computer programs are composed
+out of other functions.
 
 The construction in Proposition 1 can be expressed with this psuedocode:
 
