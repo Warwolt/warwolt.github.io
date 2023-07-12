@@ -4,10 +4,10 @@ title:  "Introduction to Euclidian Geometry: Creating an equilateral triangle fr
 excerpt_separator: <!--more-->
 ---
 
-Euclid's [*Elements*](https://en.wikipedia.org/wiki/Euclid%27s_Elements) is a geometry text book where figures are constructed using a straightedge a compass.
-
-This post is about the first proposition in the *Elements*; creating an equilateral
-triangle from scratch.
+Euclid's [*Elements*](https://en.wikipedia.org/wiki/Euclid%27s_Elements) is a
+geometry text book where figures are constructed using a straightedge a compass.
+This post is about the first proposition in the *Elements*; creating an
+equilateral triangle from scratch.
 
 Learning to do this is a nice introduction to constructive geometry, which is a
 hands-on way to do mathematics.
